@@ -25,8 +25,8 @@ namespace Objects
             if (isComplete) return;
             if (isHandled) return;
             
-            isHandled = true;
             base.HandleInteraction();
+            isHandled = true;
             batteryLight.SetActive(true);
             OnBatteryTurnedOn?.Invoke(batteryID);
         }
