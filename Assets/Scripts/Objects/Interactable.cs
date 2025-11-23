@@ -10,6 +10,7 @@ namespace Objects
         [SerializeField] private CanvasGroup interactionCanvas;
         
         protected bool interactionEnabled;
+        private Tween fadeTween;
         
         public bool InteractionEnabled => interactionEnabled;
 
@@ -36,12 +37,14 @@ namespace Objects
 
         private void DisplayInteractionCanvas()
         {
-            interactionCanvas.DOFade(1, 0.5f);
+            if (fadeTween != null && fadeTween.IsPlaying()) fadeTween.Kill();
+            fadeTween = interactionCanvas.DOFade(1, 0.5f);
         }
 
         private void HideInteractionCanvas()
         {
-            interactionCanvas.DOFade(0, 0.25f);
+            if (fadeTween != null && fadeTween.IsPlaying()) fadeTween.Kill();
+            fadeTween = interactionCanvas.DOFade(0, 0.25f);
         }
 
         protected virtual void HandleInteraction()
