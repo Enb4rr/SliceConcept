@@ -9,6 +9,9 @@ using UnityEngine.UI;
 
 namespace Managers
 {
+    /// <summary>
+    /// Loading Screen Manager
+    /// </summary>
     public class LoadingScreenManager : PersistentBaseManager<LoadingScreenManager>
     {
                 [SerializeField] private GameObject loadingScreenPrefab;
@@ -17,6 +20,7 @@ namespace Managers
         
                 private bool bIsLoading;
         
+                // Async load of another level
                 public async void LoadScene(string sceneName)
                 {
                     bIsLoading = true;
@@ -48,6 +52,10 @@ namespace Managers
                     }
                 }
         
+                /// <summary>
+                /// Small loading screen coroutine
+                /// </summary>
+                /// <returns></returns>
                 private IEnumerator CouLoadingText()
                 {
                     int dotCount = 0;

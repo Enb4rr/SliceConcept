@@ -26,9 +26,14 @@ namespace Managers
 
         private void Start()
         {
+            // Subscribe to player events
             player.onKeyPickedUp += EvaluateGameplayState;
         }
 
+        /// <summary>
+        /// Evalutes gameplay state depending on progress
+        /// </summary>
+        /// <param name="collectedKeys"></param>
         private void EvaluateGameplayState(int collectedKeys)
         {
             if (collectedKeys < amountOfKeysToCollect) return;

@@ -1,8 +1,14 @@
 using System;
 using UnityEngine;
 
+/// <summary>
+/// Handles player input and movement
+/// </summary>
 public class PlayerController : MonoBehaviour
 {
+    // Variables
+    
+    [Header("Settings")]
     [SerializeField] private float playerSpeed = 5.0f;
     [SerializeField] private float gravityValue = -9.81f;
     
@@ -11,6 +17,7 @@ public class PlayerController : MonoBehaviour
     private Vector3 playerVelocity;
     private Camera mainCamera;
 
+    // Events
     public event Action OnInteractionInput;
     public event Action OnPauseInput;
 
@@ -23,22 +30,27 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
+        // Subscribe to input
         inputSystemActions.Player.Pause.performed += _ => PlayerPauseInput();
         inputSystemActions.Player.Interact.performed += _ => PlayerInteractionInput();
     }
 
     private void OnEnable()
     {
+        // Enable input
         inputSystemActions.Enable();
     }
 
     private void OnDisable()
     {
+        // Disable input
         inputSystemActions.Disable();
     }
 
     private void Update()
     {
+        // Handle player movement input
+        
         var rawInput = inputSystemActions.Player.Move.ReadValue<Vector2>();
         var inputDir = new Vector3(rawInput.x, 0f, rawInput.y);
         inputDir = Vector3.ClampMagnitude(inputDir, 1f);
@@ -67,11 +79,13 @@ public class PlayerController : MonoBehaviour
 
     private void PlayerPauseInput()
     {
+        // Handle pause input event
         OnPauseInput?.Invoke();
     }
 
     private void PlayerInteractionInput()
     {
+        // Handle interaction input event
         OnInteractionInput?.Invoke();
     }
 }

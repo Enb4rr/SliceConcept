@@ -5,6 +5,9 @@ using UnityEngine;
 
 namespace Managers
 {
+    /// <summary>
+    /// Handles battery puzzle
+    /// </summary>
     public class BatteryPuzzleManager : MonoBehaviour
     {
         [Header("Components")]
@@ -21,6 +24,10 @@ namespace Managers
             }
         }
 
+        /// <summary>
+        /// Handles battery interaction
+        /// </summary>
+        /// <param name="id"></param>
         private void EvaluateBatteryId(int id)
         {
             if (currentBatteryId == -1)
@@ -47,6 +54,9 @@ namespace Managers
             EvaluateCompleteCondition();
         }
 
+        /// <summary>
+        /// Evaluates puzzle complete condition
+        /// </summary>
         private void EvaluateCompleteCondition()
         {
             var completed = true;

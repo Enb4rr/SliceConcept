@@ -3,6 +3,9 @@ using UnityEngine.UI;
 
 namespace Managers
 {
+    /// <summary>
+    /// Handles game over logic
+    /// </summary>
     public class GameOverManager : MonoBehaviour
     {
         [Header("Components")]

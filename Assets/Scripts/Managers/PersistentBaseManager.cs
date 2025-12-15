@@ -2,6 +2,10 @@ using UnityEngine;
 
 namespace Managers
 {
+    /// <summary>
+    /// Singleton Persistent Base Manager
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
     public abstract class PersistentBaseManager<T> : MonoBehaviour where T : MonoBehaviour
     {
         private static T _instance;
