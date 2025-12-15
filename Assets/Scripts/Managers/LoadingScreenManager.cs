@@ -54,7 +54,7 @@ namespace Managers
                     while (bIsLoading)
                     {
                         dotCount = (dotCount % 3) + 1; // 1 → 2 → 3 → 1 ...
-                        loadingScreenText.text = "Cargando" + new string('.', dotCount);
+                        loadingScreenText.text = "Loading" + new string('.', dotCount);
                         yield return new WaitForSecondsRealtime(0.5f); // adjust delay here
                     }
                     loadingScreenText.text = "";
